@@ -1,0 +1,21 @@
+.clearfix:after {
+    display: block;
+    clear: both;
+    content: "";   
+}
+
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: stretch; 
+    align-content: space-around;
+    /* flex-start, center, baseline */
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(7, 10vmin);
+    grid-template-rows: repeat(6, 10vmin);
+}
+
