@@ -1,3 +1,14 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    /* view height */
+    height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center; 
+    align-content: space-around;
+}
+
 .clearfix:after {
     display: block;
     clear: both;
@@ -15,7 +26,10 @@
 
 #board {
     display: grid;
-    grid-template-columns: repeat(7, 10vmin);
-    grid-template-rows: repeat(6, 10vmin);
+    grid-template-columns: repeat(3, 10vmin);
+    grid-template-rows: repeat(3, 10vmin);
 }
 
+.cell {
+    border: 3px solid black;
+}
