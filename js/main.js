@@ -12,14 +12,18 @@ let board;
 
 const initialize = () => {
     console.log('Initialized')
+    board = Array(3).fill(Array(3).fill(null))
     console.log(board)
 }
 
- board = Array(3).fill(Array(3).fill(null))
-
- /*
+ 
 const iterateBoard = () => {
-
-} */
+    board.forEach(function (rowArr, rowIdx){
+        rowArr.forEach(function (cellValue, colIdx){
+            console.log(`r${rowIdx}c${colIdx}`)
+            console.log(cellValue)
+        })
+    })
+} 
 
 initialize()
