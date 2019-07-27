@@ -1,7 +1,16 @@
+/* 
+Game Story 
+*/
+
+
 /*----- constants -----*/ 
 /*----- app's state (variables) -----*/ 
 /*----- cached element references -----*/ 
 /*----- event listeners -----*/ 
+
+//Assign id's to each cell
+
+
 /*----- functions -----*/
 
 /* 
@@ -16,14 +25,20 @@ const initialize = () => {
     console.log(board)
 }
 
- 
+//Assign id's to each cell 
 const iterateBoard = () => {
     board.forEach(function (rowArr, rowIdx){
         rowArr.forEach(function (cellValue, colIdx){
-            console.log(`r${rowIdx}c${colIdx}`)
-            console.log(cellValue)
+            //console.log(`r${rowIdx}c${colIdx}`)
+            //console.log(cellValue)           
         })
     })
-} 
+}
 
 initialize()
+
+const cellArr = document.querySelectorAll('.cell')
+for ( cell of cellArr) {
+    console.log(cell)
+}
+
