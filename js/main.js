@@ -17,9 +17,9 @@ Game Story
 
 const checkForWin = (rowIdx, colIdx) => {
     console.log('checking for win')
-    //checkRow(rowIdx)
-    //checkCol(colIdx)
-    //checkDiagonal(rowIdx, colIdx)
+    checkRow(rowIdx)
+    checkCol(colIdx)
+    checkDiagonal(rowIdx, colIdx)
 }
 
 const checkRow = (rowIdx) => {
@@ -71,7 +71,11 @@ let board, turn, winner;
 initialize()
 
 function initialize() {
-    board = Array(3).fill(Array(3).fill(0))
+    board = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+    ]
     turn = true 
     render()
 }
