@@ -5,6 +5,8 @@ Game Story
 
 /*----- constants -----*/
 let board, turn;
+const boardEl = document.querySelector('#board')
+
 /*----- app's state (variables) -----*/ 
 /*----- cached element references -----*/ 
 /*----- event listeners -----*/ 
@@ -40,15 +42,15 @@ const play = (evt) => {
 const iterateBoard = () => {
     board.forEach(function (rowArr, rowIdx){
         rowArr.forEach(function (cellValue, colIdx){
-            const boardEl = document.querySelector('#board')
             const cellEl = document.createElement('div')
             //cellEl.setAttribute('data-position', `r${rowIdx}c${colIdx}`)
             //console.log('position: ' + cellEl.getAttribute('data-position'))
             cellEl.classList.add('cell')
             boardEl.appendChild(cellEl)
-            cellEl.addEventListener("click", play)          
+                      
         })
     })
+    boardEl.addEventListener("click", play)  // Delegate event handling in Memory game
 }
 
 iterateBoard()
