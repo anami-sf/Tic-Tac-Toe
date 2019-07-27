@@ -33,20 +33,25 @@ const checkRow = (rowIdx) => {
 
 const checkCol = (colIdx) => {
     console.log('Checking col')
-    //const colArr = board[colIdx]
     const sum = board[0][colIdx] + board[1][colIdx] + board[2][colIdx]
     console.log(board)
     console.log('sum: ' + sum)
     return sum
 }
 
-/* const checkDiagonal = (rowIdx, colIdx) => {
+
+//check only if middle square is clicked
+const checkDiagonal = (rowIdx, colIdx) => {
     console.log('Checking diagonal')
-    const rowArr = board[rowIdx]
-    const sum = row[0] + row[1] + row[2]
-    console.log('sum: ' + sum)
-    return sum
-} */
+    if ((rowIdx == 1) && (colIdx == 1)){
+        console.log('Checking diagonal IF')
+        const sum1 = board[rowIdx][colIdx] + board[rowIdx+1][colIdx-1] + board[rowIdx-1][colIdx+1]
+        const sum2 = board[rowIdx][colIdx] + board[rowIdx+1][colIdx-1] + board[rowIdx-1][colIdx+1]
+        const sums = [sum1, sum2]
+        console.log('sums' + sums)
+        return sums
+    }
+}
 
 /*----- constants -----*/
 
@@ -95,34 +100,26 @@ function renderBoard() {
             boardEl.appendChild(cellEl)           
         })
     })
-    boardEl.addEventListener("click", play)  // Delegate event handling in Memory game
+    boardEl.addEventListener("click", handleClick)  // Delegate event handling in Memory game
 }
 // When I click a box mark it with an x
-
-console.log('first board:', board)
-
-function play(evt) {
-    console.log('playStartBoard: ' , board)
-    const row = evt.target.getAttribute('data-row')
-    const col = evt.target.getAttribute('data-col')
+function handleClick(evt) {
+    //console.log('playStartBoard: ' , board)
+    const row = parseInt(evt.target.getAttribute('data-row')) 
+    const col = parseInt(evt.target.getAttribute('data-col')) 
     console.log('row: ' + row)
     console.log('col: ' + col)
   
     if (turn) {
         evt.target.textContent = 'X'
-        console.log('cell value:', board[row][col])
         board[row][col] = 1
 
     } else {
         evt.target.textContent = 'O'
         board[row][col] = -1
     }
-    console.log('tgt: ' , evt.target.getAttribute.textContent)
-    console.log('endPlay: ' , board)
     turn = !turn
     checkForWin(row, col)
-    
-    
 }
 
 
@@ -144,4 +141,3 @@ const getWinner = () => {
         console.log('winner: Player2')
     }
 }
-
