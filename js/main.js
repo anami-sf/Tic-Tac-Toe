@@ -25,20 +25,24 @@ const initialize = () => {
     console.log(board)
 }
 
+initialize()
+
 //Assign id's to each cell 
 const iterateBoard = () => {
     board.forEach(function (rowArr, rowIdx){
         rowArr.forEach(function (cellValue, colIdx){
             //console.log(`r${rowIdx}c${colIdx}`)
-            //console.log(cellValue)           
+            //console.log(cellValue)
+            const boardEl = document.querySelector('#board')
+            console.log('boardEl: ' + boardEl)
+            const cellEl = document.createElement('div')
+            cellEl.setAttribute('data-position', `r${rowIdx}c${colIdx}`)
+            console.log('position: ' + cellEl.getAttribute('data-position'))
+            cellEl.classList.add('cell')
+            boardEl.appendChild(cellEl)          
         })
     })
 }
 
-initialize()
+iterateBoard()
 
-const cellArr = document.querySelectorAll('.cell')
-cellArr.forEach((cell, cellIdx) => {
-    console.log(cell)
-    cell.setAttribute('id', 'test')
-}) 
