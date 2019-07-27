@@ -17,43 +17,40 @@ Game Story
 
 const checkForWin = (rowIdx, colIdx) => {
     console.log('checking for win')
-    checkRow(rowIdx)
-    checkCol(colIdx)
-    checkDiagonal(rowIdx, colIdx)
+    if (checkRow(rowIdx) || checkCol(colIdx) || checkDiagonal(rowIdx, colIdx)) {
+        return true
+    } else {
+        return false
+    }
 }
 
 const checkRow = (rowIdx) => {
     console.log('Checking row')
     const rowArr = board[rowIdx]
-    const sum = rowArr[0] + rowArr[1] + rowArr[2]
+    const sum = Math.abs(rowArr[0] + rowArr[1] + rowArr[2])
     console.log(board)
     console.log('sum: ' + sum)
-    return sum
+    return sum === 3 ? true : false
 }
 
 const checkCol = (colIdx) => {
     console.log('Checking col')
-    const sum = board[0][colIdx] + board[1][colIdx] + board[2][colIdx]
+    const sum = Math.abs(board[0][colIdx] + board[1][colIdx] + board[2][colIdx])
     console.log(board)
     console.log('sum: ' + sum)
-    return sum
+    return sum === 3 ? true : false
 }
 
-
-//check only if middle square is clicked
 const checkDiagonal = (rowIdx, colIdx) => {
     console.log('Checking diagonal')
-    if ((rowIdx == 1) && (colIdx == 1)){
-        console.log('Checking diagonal IF')
-        const sum1 = board[rowIdx][colIdx] + board[rowIdx+1][colIdx-1] + board[rowIdx-1][colIdx+1]
-        const sum2 = board[rowIdx][colIdx] + board[rowIdx+1][colIdx-1] + board[rowIdx-1][colIdx+1]
-        const sums = [sum1, sum2]
-        console.log('sums' + sums)
-        return sums
-    }
+    const sum1 = Math.abs(board[0][0] + board[1][1] + board[2][2])
+    const sum2 = Math.abs(board[2][0] + board[1][1] + board[0][2])
+    console.log(`sum1: ${sum1} sum2:${sum2}`)
+    return sum1 === 3 || sum2 === 3 ? true : false
 }
 
 /*----- constants -----*/
+
 const boardEl = document.querySelector('#board')
 
 /* const players = {
@@ -118,7 +115,7 @@ function handleClick(evt) {
         board[row][col] = -1
     }
     turn = !turn
-    checkForWin(row, col)
+    if (checkForWin(row, col)){console.log('You win!')}
 }
 
 
@@ -140,3 +137,5 @@ const getWinner = () => {
         console.log('winner: Player2')
     }
 }
+
+
