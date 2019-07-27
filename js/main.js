@@ -38,7 +38,7 @@ const iterateBoard = () => {
 initialize()
 
 const cellArr = document.querySelectorAll('.cell')
-for ( cell of cellArr) {
+cellArr.forEach((cell, cellIdx) => {
     console.log(cell)
-}
-
+    cell.setAttribute('id', 'test')
+}) 
