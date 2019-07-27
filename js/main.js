@@ -4,7 +4,7 @@ Game Story
 
 
 /*----- constants -----*/
-let board, turn;
+var board, turn;
 const boardEl = document.querySelector('#board')
 
 /*----- app's state (variables) -----*/ 
@@ -19,8 +19,13 @@ const boardEl = document.querySelector('#board')
 const initialize = () => {
     turn = true
     console.log('Initialized')
-    board = Array(3).fill(Array(3).fill(null))
-    console.log(board)
+    //board = Array(3).fill(Array(3).fill(0))
+    board = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+    ]
+    console.log('Init board: ', board)
 }
 
 initialize()
@@ -28,14 +33,17 @@ initialize()
 
 // When I click a box mark it with an x
 const play = (evt) => {
+    console.log('startPalyBoard: ', board)
     console.log('Click!: ' + evt.target.getAttribute('data-position'))
     if (turn) {
         console.log(evt.target)
         evt.target.textContent = 'X'
+        board[0][1] = 1
     } else {
         evt.target.textContent = 'O'
     }
     turn = !turn
+    console.log('endPlayBoard: ' , board)
 }
 
 //Create cell elements
