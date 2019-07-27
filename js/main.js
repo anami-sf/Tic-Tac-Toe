@@ -4,13 +4,49 @@ Game Story
 . Generate board
 . Keep track of turn 
 . Mark squares clicked by players - show on page
-. track each player's moves
-. Determine winner
-. Render score
-
+. Calculate winner
+. Render winner
 
 */
 
+// Calculate winner
+
+// Iterate through board to look for winning patterns: horizontal, vertical, diagonal
+
+//
+
+const checkForWin = (rowIdx, colIdx) => {
+    console.log('checking for win')
+    //checkRow(rowIdx)
+    //checkCol(colIdx)
+    //checkDiagonal(rowIdx, colIdx)
+}
+
+const checkRow = (rowIdx) => {
+    console.log('Checking row')
+    const rowArr = board[rowIdx]
+    const sum = rowArr[0] + rowArr[1] + rowArr[2]
+    console.log(board)
+    console.log('sum: ' + sum)
+    return sum
+}
+
+const checkCol = (colIdx) => {
+    console.log('Checking col')
+    //const colArr = board[colIdx]
+    const sum = board[0][colIdx] + board[1][colIdx] + board[2][colIdx]
+    console.log(board)
+    console.log('sum: ' + sum)
+    return sum
+}
+
+/* const checkDiagonal = (rowIdx, colIdx) => {
+    console.log('Checking diagonal')
+    const rowArr = board[rowIdx]
+    const sum = row[0] + row[1] + row[2]
+    console.log('sum: ' + sum)
+    return sum
+} */
 
 /*----- constants -----*/
 
@@ -32,8 +68,19 @@ let board, turn, winner;
 
 
 /*----- functions -----*/
+initialize()
 
-const renderBoard = () => {
+function initialize() {
+    board = Array(3).fill(Array(3).fill(0))
+    turn = true 
+    render()
+}
+
+function render() {
+    renderBoard()
+}
+
+function renderBoard() {
     board.forEach(function (rowArr, rowIdx){
         rowArr.forEach(function (cellValue, colIdx){
             const cellEl = document.createElement('div')
@@ -47,21 +94,31 @@ const renderBoard = () => {
     boardEl.addEventListener("click", play)  // Delegate event handling in Memory game
 }
 // When I click a box mark it with an x
-const play = (evt) => {
 
+console.log('first board:', board)
+
+function play(evt) {
+    console.log('playStartBoard: ' , board)
     const row = evt.target.getAttribute('data-row')
     const col = evt.target.getAttribute('data-col')
+    console.log('row: ' + row)
+    console.log('col: ' + col)
   
     if (turn) {
         evt.target.textContent = 'X'
+        console.log('cell value:', board[row][col])
         board[row][col] = 1
 
     } else {
         evt.target.textContent = 'O'
         board[row][col] = -1
     }
+    console.log('tgt: ' , evt.target.getAttribute.textContent)
+    console.log('endPlay: ' , board)
     turn = !turn
-    scoreTracker()
+    checkForWin(row, col)
+    
+    
 }
 
 
@@ -73,31 +130,7 @@ const play = (evt) => {
     }, 0)
 }
  */
-const scoreTracker = () => {
-    // Represent three consecurive marks:
 
-    //if every cell of a row is the same
-
-    //iterate over board 
-
-    for (row of board) {
-        //cellEl.setAttribute('data-position', `r${rowIdx}c${colIdx}`)
-        console.log('row: ' + row)
-        //console.log('rowSum: ' + sum(row))
-/*         if (  Math.abs(sum(row)) === 3 ) {
-            console.log('sum: ' + sum(row))
-            console.log('row: ' + row)
-            break
-        } */
-
-        if (!turn) {
-            console.log('Winner is Player1')
-        } else {
-            console.log('Winner is Player12')
-        }
-        
-    }
-}
 
 const getWinner = () => {
     
@@ -108,17 +141,3 @@ const getWinner = () => {
     }
 }
 
-const render = () => {
-    console.log('render')
-    renderBoard()
-}
-
-const initialize = () => {
-    turn = true
-    console.log('Initialized')
-    board = Array(3).fill(Array(3).fill(null))
-    console.log(board)
-    render()
-}
-
-initialize()
