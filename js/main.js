@@ -120,7 +120,7 @@ function renderBoard() {
 }
 // When I click a box mark it with an x
 function handleClick(evt) {
-    //console.log('playStartBoard: ' , board)
+
     const row = parseInt(evt.target.getAttribute('data-row')) 
     const col = parseInt(evt.target.getAttribute('data-col')) 
     console.log('row: ' + row)
