@@ -63,8 +63,10 @@ h2 {
 }
 
 #main {
-    display: flex;
+    display: inherit;
+    flex-flow: column;
     justify-content: center;
+    align-items: center;
     background-color: ligthyellow;
     width: 100%;
     margin: 0;
@@ -74,12 +76,20 @@ h2 {
     display: grid;
     grid-template-columns: repeat(3, 15vmin);
     grid-template-rows: repeat(3, 15vmin);
-    margin: 100px 15px;
+    margin: 50px 15px;
 
 }
 
 .cell {
     border: 3px solid orangered;
+}
+
+#reset {
+    display: block;
+    background-color: lightgreen;
+    padding: 1vmin 5vmin;
+    max-width: 100px;
+
 }
 
 footer {
