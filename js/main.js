@@ -51,7 +51,26 @@ const checkDiagonal = (rowIdx, colIdx) => {
 
 /*----- constants -----*/
 
+const zombies =  [
+    "<img alt=zombie src=images/girlZombie.svg>",
+    "<img alt=zombie src=images/blueZombie.svg>",
+    "<img alt=zombie src=images/greyZombie.svg>",
+    "<img alt=zombie src=images/greenZombie.svg>",
+    "<img alt=zombie src=images/greenZombie.svg>"
+]
+
+const plants = [
+    "<img alt=plant src=images/plant1.svg>",
+    "<img alt=plant src=images/plant3.svg>",
+    "<img alt=plant src=images/plant1.svg>",
+    "<img alt=plant src=images/plant3.svg>",
+    "<img alt=plant src=images/plant1.svg>",
+]
+
+let moveCt1 = 0
+let moveCt2 = 0
 const boardEl = document.querySelector('#board')
+
 
 /* const players = {
     '1': 'X',
@@ -107,12 +126,16 @@ function handleClick(evt) {
     console.log('col: ' + col)
   
     if (turn) {
-        evt.target.textContent = 'X'
+        evt.target.innerHTML = zombies[moveCt1]
+        evt.target.style.backgroundColor = "darkgrey"
         board[row][col] = 1
+        moveCt1 += 1
 
     } else {
-        evt.target.textContent = 'O'
+        evt.target.innerHTML = plants[moveCt2]
+        evt.target.style.backgroundColor = "lightYellow"
         board[row][col] = -1
+        moveCt2 += 1
     }
     turn = !turn
     if (checkForWin(row, col)){console.log('You win!')}
