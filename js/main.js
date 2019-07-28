@@ -110,6 +110,7 @@ function renderBoard() {
             const cellEl = document.createElement('div')
             cellEl.setAttribute('data-row', rowIdx)
             cellEl.setAttribute('data-col', colIdx)
+            cellEl.style.backgroundColor='lightyellow'
             //console.log('position: ' + cellEl.getAttribute('data-row') + cellEl.getAttribute('data-col'))
             cellEl.classList.add('cell')
             boardEl.appendChild(cellEl)           

@@ -27,17 +27,18 @@ body {
 }
 
 header {
-    background-color: rgb(214, 250, 203);
+    background-color: darkgrey;
     display: block;
     width: 100%;
-    border-bottom: 5px solid orangered;
+    height: 120px;
+    /* border-bottom: 20px solid rgb(92, 179, 52); */
 }
 
 h1 {
     font-size: 40px;
     font-weight: bold;
     margin: 15px;
-    color: black;
+    color: rgb(187, 54, 83);
 }
 
 h2 {
@@ -45,21 +46,26 @@ h2 {
     font-weight: bold;
     margin-bottom: 50px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
 }
 
 #plants {
     color: green;
 }
 
+#vs {
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(187, 54, 83);
+}
+
 #zombies {
-    color: rgb(97, 95, 95);
+    color: rgb(78, 76, 76);
 }
 
 #main {
     display: flex;
     justify-content: center;
-    background-color: lightgreen;
+    background-color: ligthyellow;
     width: 100%;
     margin: 0;
 }
@@ -91,14 +97,15 @@ footer {
     font-size: 12px;
     padding: 10px;
     text-align: center;
+    width: 100%;
 }
 
 #signature {
     padding: 20px;
-    background-color: rgb(65, 153, 42);
+    background-color: rgb(161, 240, 96);
     width: 100%;
     font-size: 18px;
-    height: 20%
+    height: 20%;
 }
 
 .message {
