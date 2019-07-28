@@ -123,23 +123,25 @@ function handleClick(evt) {
 
     const row = parseInt(evt.target.getAttribute('data-row')) 
     const col = parseInt(evt.target.getAttribute('data-col')) 
-    console.log('row: ' + row)
-    console.log('col: ' + col)
-  
-    if (turn) {
-        evt.target.innerHTML = zombies[moveCt1]
-        evt.target.style.backgroundColor = "darkgrey"
-        board[row][col] = 1
-        moveCt1 += 1
 
-    } else {
-        evt.target.innerHTML = plants[moveCt2]
-        evt.target.style.backgroundColor = "lightYellow"
-        board[row][col] = -1
-        moveCt2 += 1
+    if (board[row][col] === 0) {
+        
+        if (turn) {
+            evt.target.innerHTML = zombies[moveCt1]
+            evt.target.style.backgroundColor = "darkgrey"
+            board[row][col] = 1
+            moveCt1 += 1
+            
+        } else {
+            evt.target.innerHTML = plants[moveCt2]
+            evt.target.style.backgroundColor = "lightYellow"
+            board[row][col] = -1
+            moveCt2 += 1
+        }
+        turn = !turn
+        if (checkForWin(row, col)){console.log('You win!')}
+        
     }
-    turn = !turn
-    if (checkForWin(row, col)){console.log('You win!')}
 }
 
 
@@ -163,3 +165,4 @@ const getWinner = () => {
 }
 
 
+// Only click square once
