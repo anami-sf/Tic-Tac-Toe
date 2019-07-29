@@ -27,18 +27,15 @@ const plants = [
     "<img class=mark alt=plant src=images/plant5.svg>",
 ]
 
-let moveCt1 = 0
-let moveCt2 = 0
+/*----- app's state (variables) -----*/ 
+let board,turn, winner, moveCt1, moveCt2;
+
+/*----- cached element references -----*/ 
 const main = document.querySelector("#main")
 const boardEl = document.querySelector('#board')
 const winnerEl = document.querySelector('#winner')
 const turnEl = document.querySelector("#turn")
 const resetBtn = document.querySelector('#resetBtn')
-
-/*----- app's state (variables) -----*/ 
-var board;
-let turn, winner;
-/*----- cached element references -----*/ 
 /*----- event listeners -----*/ 
 
 resetBtn.addEventListener("click", reset)
@@ -54,14 +51,14 @@ function initialize() {
         [0, 0, 0]
     ]
     turn = true 
+    moveCt1 = 0
+    moveCt2 = 0
     render()
 }
 
 function render() {
     renderBoard()
     turnEl.innerHTML = "<span id=plants>Plants</span><span id=vs> vs </span> <span id=zombies>Zombies</span>"
-    console.log(board)
-    //console.log('type: ', typeof(board), 'value', board[0][0])
 }
 
 function renderBoard() {
@@ -71,7 +68,6 @@ function renderBoard() {
             cellEl.setAttribute('data-row', rowIdx)
             cellEl.setAttribute('data-col', colIdx)
             cellEl.style.backgroundColor='lightyellow'
-            //console.log('position: ' + cellEl.getAttribute('data-row') + cellEl.getAttribute('data-col'))
             cellEl.classList.add('cell')
             boardEl.appendChild(cellEl)           
         })
@@ -128,6 +124,7 @@ function displayWinner(row, col) {
         winnerEl.setAttribute("id", "zombiesWin" )
     }
 }
+
 
 // When I click a box mark it with an x
 function handleClick(evt) {
