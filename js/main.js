@@ -32,9 +32,8 @@ let moveCt2 = 0
 const main = document.querySelector("#main")
 const boardEl = document.querySelector('#board')
 const winnerEl = document.createElement('div')
+const turnEl = document.querySelector("#turn")
 const resetBtn = document.querySelector('#resetBtn')
-
-
 
 /*----- app's state (variables) -----*/ 
 var board;
@@ -60,6 +59,7 @@ function initialize() {
 
 function render() {
     renderBoard()
+    turnEl.innerHTML = "<span id=plants>Plants</span><span id=vs> vs </span> <span id=zombies>Zombies</span>"
 }
 
 function renderBoard() {
@@ -77,26 +77,23 @@ function renderBoard() {
     boardEl.addEventListener("click", handleClick)  // Delegate event handling in Memory game
 }
 
-const checkForWin = (rowIdx, colIdx) => {
-    console.log('checking for win')
-    if (checkRow(rowIdx) || checkCol(colIdx) || checkDiagonal(rowIdx, colIdx)) {
-        return true
+function displayTurn(){
+    turnEl.innerHTML = ""
+    if(turn){
+        turnEl.innerHTML = "<span id=zombies>Zombies</span>"
     } else {
-        return false
+        turnEl.innerHTML = "<span id=plants>Plants</span>"
     }
+
 }
 
 const checkRow = (rowIdx) => {
-    console.log('Checking row')
     const rowArr = board[rowIdx]
     const sum = Math.abs(rowArr[0] + rowArr[1] + rowArr[2])
-    console.log(board)
-    console.log('sum: ' + sum)
     return sum === 3 ? true : false
 }
 
 const checkCol = (colIdx) => {
-    console.log('Checking col')
     const sum = Math.abs(board[0][colIdx] + board[1][colIdx] + board[2][colIdx])
     console.log(board)
     console.log('sum: ' + sum)
@@ -107,8 +104,34 @@ const checkDiagonal = (rowIdx, colIdx) => {
     console.log('Checking diagonal')
     const sum1 = Math.abs(board[0][0] + board[1][1] + board[2][2])
     const sum2 = Math.abs(board[2][0] + board[1][1] + board[0][2])
-    console.log(`sum1: ${sum1} sum2:${sum2}`)
     return sum1 === 3 || sum2 === 3 ? true : false
+}
+
+const checkForWin = (rowIdx, colIdx) => {
+    console.log('checking for win')
+    if (checkRow(rowIdx) || checkCol(colIdx) || checkDiagonal(rowIdx, colIdx)) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function displayWinner(row, col) {
+    if (checkForWin(row, col)){      
+        if (!turn) {
+            winnerEl.textContent = 'The zombies ate your barins!!'
+            winnerEl.setAttribute("id", "zombiesWin" )
+            main.appendChild(winnerEl)
+            
+            console.log('The zombies ate your barins!!')
+            //alert('The zombies ate your barins!!')
+        } else {
+            winnerEl.textContent = 'The plants are taking over!!'
+            winnerEl.setAttribute("id", "plantsWin" )
+            main.appendChild(winnerEl)
+        }
+        console.log('You win!')
+    }
 }
 
 // When I click a box mark it with an x
@@ -130,23 +153,10 @@ function handleClick(evt) {
         board[row][col] = -1
         moveCt2 += 1
     }
+    displayTurn()
     turn = !turn
-    if (checkForWin(row, col)){
-        
-        if (!turn) {
-            winnerEl.textContent = 'The zombies ate your barins!!'
-            winnerEl.setAttribute("id", "zombiesWin" )
-            main.appendChild(winnerEl)
-            
-            console.log('The zombies ate your barins!!')
-            //alert('The zombies ate your barins!!')
-        } else {
-            winnerEl.textContent = 'The plants are taking over!!'
-            winnerEl.setAttribute("id", "plantsWin" )
-            main.appendChild(winnerEl)
-        }
-        console.log('You win!')
-    }
+    displayWinner(row, col)
+    //here
 }
 
 function reset(){
@@ -155,9 +165,10 @@ function reset(){
     moveCt1 = 0
     moveCt2 = 0
     winnerEl.textContent = ""
+    turnEl.innerHTML = "<span id=plants>Plants</span><span id=vs> vs </span> <span id=zombies>Zombies</span>"
     for(row of board) {
         for(cellValue of row){
-            cellValue = 0
+            cellValue = 0   //The cell value is not getting reset as expected
             console.log('cell value: ' , typeof cellValue)       
         }
     }
