@@ -60,6 +60,8 @@ function initialize() {
 function render() {
     renderBoard()
     turnEl.innerHTML = "<span id=plants>Plants</span><span id=vs> vs </span> <span id=zombies>Zombies</span>"
+    console.log(board)
+    //console.log('type: ', typeof(board), 'value', board[0][0])
 }
 
 function renderBoard() {
@@ -162,16 +164,25 @@ function reset(){
     winnerEl.textContent = ""
     turnEl.innerHTML = "<span id=plants>Plants</span><span id=vs> vs </span> <span id=zombies>Zombies</span>"
     console.log(board)
-    for(row of board) {  //forEach and standard
-        for(cellValue of row){
-            cellValue = 0   //The cell value is not getting reset as 
-            console.log(cellValue)
-            console.log(board)
-            return cellValue
-        }
-        return row
-        console.log(board)
-    }
-    return board
+
+    board.forEach(function (rowArr, rowIdx){
+        rowArr.forEach(function (cellValue, colIdx){
+            board[rowIdx][colIdx] = 0
+        })
+    })
+    // for (let i=0; i<board.length; i++){
+    //     for (let j=0; j<board[i].length; i++){
+    //         //console.log(board[i][j])
+    //         board[i][j] = 0
+    //     }
+    // }
+    // for(row of board) {  //forEach and standard
+    //     for(cellValue of row){
+    //         cellValue = 0   //The cell value is not getting reset as 
+    //         console.log(cellValue)
+    //         console.log(board)
+    //     }
+    //     console.log(board)
+    // }
     console.log(board)
 }

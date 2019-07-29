@@ -1,10 +1,7 @@
 body {
     font-family: 'Courier New', Courier, monospace;
-    /* view height */
     height: 100vh;
     background-color: lightyellow;
-    padding: 0px;
-    margin: 0px;
 }
 
 .layout {
@@ -29,7 +26,6 @@ body {
     justify-content: flex-start;
     align-items: stretch; 
     align-content: space-around;
-    /* flex-start, center, baseline */
 }
 
 header {
