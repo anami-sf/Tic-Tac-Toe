@@ -80,6 +80,11 @@ h2 {
 
 }
 
+.cell:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 .cell {
     border: 3px solid orangered;
 }
@@ -110,7 +115,11 @@ h2 {
     background-color: lightgreen;
     padding: 1vmin 5vmin;
     max-width: 100px;
+}
 
+#resetBtn:hover {
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 footer {
