@@ -134,13 +134,14 @@ function handleClick(evt) {
         if (!turn) {
             winnerEl.textContent = 'The zombies ate your barins!!'
             winnerEl.setAttribute("id", "zombiesWin" )
-            console.log(main)
             main.appendChild(winnerEl)
             
             console.log('The zombies ate your barins!!')
             //alert('The zombies ate your barins!!')
         } else {
-            alert('The plants won!!')
+            winnerEl.textContent = 'The plants are taking over!!'
+            winnerEl.setAttribute("id", "plantsWin" )
+            main.appendChild(winnerEl)
         }
         console.log('You win!')
     }

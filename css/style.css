@@ -92,6 +92,14 @@ h2 {
     font-weight: bold;
 }
 
+#plantsWin {
+    margin-top: 30px;
+    padding: 10px;
+    color: green;
+    font-size: 30px;
+    font-weight: bold;
+}
+
 #resetBtn {
     display: block;
     background-color: lightgreen;
