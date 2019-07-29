@@ -135,7 +135,7 @@ function handleClick(evt) {
     const row = parseInt(evt.target.getAttribute('data-row')) 
     const col = parseInt(evt.target.getAttribute('data-col')) 
   
-    if (board[row][col] === 0){
+    if (board[row][col] === 0 && !checkForWin(row, col)){
         if (turn) {
             evt.target.innerHTML = zombies[moveCt1]
             evt.target.style.backgroundColor = "darkgrey"
