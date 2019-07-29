@@ -9,11 +9,80 @@ Game Story
 
 */
 
-// Calculate winner
 
-// Iterate through board to look for winning patterns: horizontal, vertical, diagonal
+/*----- constants -----*/
 
-//
+const zombies =  [
+    "<img alt=zombie src=images/girlZombie.svg>",
+    "<img alt=zombie src=images/blueZombie.svg>",
+    "<img alt=zombie src=images/greyZombie.svg>",
+    "<img alt=zombie src=images/greenZombie.svg>",
+    "<img alt=zombie src=images/greenZombie.svg>"
+]
+
+const plants = [
+    "<img alt=plant src=images/plant1.svg>",
+    "<img alt=plant src=images/plant3.svg>",
+    "<img alt=plant src=images/plant1.svg>",
+    "<img alt=plant src=images/plant3.svg>",
+    "<img alt=plant src=images/plant1.svg>",
+]
+
+let moveCt1 = 0
+let moveCt2 = 0
+const boardEl = document.querySelector('#board')
+const resetBtn = document.querySelector('#resetBtn')
+
+
+/* const players = {
+    '1': 'X',
+    '-1': 'O',
+    '0': ' ', 
+}*/
+
+
+/*----- app's state (variables) -----*/ 
+var board;
+let turn, winner;
+/*----- cached element references -----*/ 
+/*----- event listeners -----*/ 
+
+resetBtn.addEventListener("click", reset)
+
+
+
+
+/*----- functions -----*/
+initialize()
+
+function initialize() {
+    board = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+    ]
+    turn = true 
+    render()
+}
+
+function render() {
+    renderBoard()
+}
+
+function renderBoard() {
+    board.forEach(function (rowArr, rowIdx){
+        rowArr.forEach(function (cellValue, colIdx){
+            const cellEl = document.createElement('div')
+            cellEl.setAttribute('data-row', rowIdx)
+            cellEl.setAttribute('data-col', colIdx)
+            cellEl.style.backgroundColor='lightyellow'
+            //console.log('position: ' + cellEl.getAttribute('data-row') + cellEl.getAttribute('data-col'))
+            cellEl.classList.add('cell')
+            boardEl.appendChild(cellEl)           
+        })
+    })
+    boardEl.addEventListener("click", handleClick)  // Delegate event handling in Memory game
+}
 
 const checkForWin = (rowIdx, colIdx) => {
     console.log('checking for win')
@@ -49,75 +118,7 @@ const checkDiagonal = (rowIdx, colIdx) => {
     return sum1 === 3 || sum2 === 3 ? true : false
 }
 
-/*----- constants -----*/
 
-const zombies =  [
-    "<img alt=zombie src=images/girlZombie.svg>",
-    "<img alt=zombie src=images/blueZombie.svg>",
-    "<img alt=zombie src=images/greyZombie.svg>",
-    "<img alt=zombie src=images/greenZombie.svg>",
-    "<img alt=zombie src=images/greenZombie.svg>"
-]
-
-const plants = [
-    "<img alt=plant src=images/plant1.svg>",
-    "<img alt=plant src=images/plant3.svg>",
-    "<img alt=plant src=images/plant1.svg>",
-    "<img alt=plant src=images/plant3.svg>",
-    "<img alt=plant src=images/plant1.svg>",
-]
-
-let moveCt1 = 0
-let moveCt2 = 0
-const boardEl = document.querySelector('#board')
-
-
-/* const players = {
-    '1': 'X',
-    '-1': 'O',
-    '0': ' ', 
-}*/
-
-
-/*----- app's state (variables) -----*/ 
-let board, turn, winner;
-/*----- cached element references -----*/ 
-/*----- event listeners -----*/ 
-
-//Assign id's to each cell
-
-
-/*----- functions -----*/
-initialize()
-
-function initialize() {
-    board = [
-        [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0]
-    ]
-    turn = true 
-    render()
-}
-
-function render() {
-    renderBoard()
-}
-
-function renderBoard() {
-    board.forEach(function (rowArr, rowIdx){
-        rowArr.forEach(function (cellValue, colIdx){
-            const cellEl = document.createElement('div')
-            cellEl.setAttribute('data-row', rowIdx)
-            cellEl.setAttribute('data-col', colIdx)
-            cellEl.style.backgroundColor='lightyellow'
-            //console.log('position: ' + cellEl.getAttribute('data-row') + cellEl.getAttribute('data-col'))
-            cellEl.classList.add('cell')
-            boardEl.appendChild(cellEl)           
-        })
-    })
-    boardEl.addEventListener("click", handleClick)  // Delegate event handling in Memory game
-}
 // When I click a box mark it with an x
 function handleClick(evt) {
 
@@ -134,32 +135,39 @@ function handleClick(evt) {
 
     } else {
         evt.target.innerHTML = plants[moveCt2]
-        evt.target.style.backgroundColor = "lightYellow"
         board[row][col] = -1
         moveCt2 += 1
     }
     turn = !turn
-    if (checkForWin(row, col)){console.log('You win!')}
-}
+    if (checkForWin(row, col)){
+        if (turn) {
+            const winner = document.createElement('div')
+            winner.classList.add('winner')
+            winner.textContent = 'The zombies ate your barins!!'
 
-
-//Create score tracker
-
-/* const sum = (arr) => {
-    arr.reduce((acc, num) => {
-        return acc + num
-    }, 0)
-}
- */
-
-
-const getWinner = () => {
-    
-    if (!turn) {
-        console.log('winner: Player1')
-    } else {
-        console.log('winner: Player2')
+            alert('The zombies ate your barins!!')
+        } else {
+            alert('The plants won!!')
+        }
+        console.log('You win!')
     }
 }
+
+function reset(){
+    boardEl.innerHTML = ''
+    renderBoard()
+    moveCt1 = 0
+    moveCt2 = 0
+    for(row of board) {
+        for(cellValue of row){
+            cellValue = 0
+            console.log('cell value: ' , typeof cellValue)       
+        }
+    }
+    console.log('endBoard: ', board)
+}
+
+
+
 
 
