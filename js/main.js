@@ -133,20 +133,25 @@ function handleClick(evt) {
     const row = parseInt(evt.target.getAttribute('data-row')) 
     const col = parseInt(evt.target.getAttribute('data-col')) 
   
-    if (turn) {
-        evt.target.innerHTML = zombies[moveCt1]
-        evt.target.style.backgroundColor = "darkgrey"
-        board[row][col] = 1
-        moveCt1 += 1
-
+    if (board[row][col] === 0){
+        if (turn) {
+            evt.target.innerHTML = zombies[moveCt1]
+            evt.target.style.backgroundColor = "darkgrey"
+            board[row][col] = 1
+            moveCt1 += 1
+    
+        } else {
+            evt.target.innerHTML = plants[moveCt2]
+            board[row][col] = -1
+            moveCt2 += 1
+        }
+        displayTurn()
+        turn = !turn
+        displayWinner(row, col)
+        console.log(board[row][col], typeof board[row][col] )
     } else {
-        evt.target.innerHTML = plants[moveCt2]
-        board[row][col] = -1
-        moveCt2 += 1
+        console.log('double click')
     }
-    displayTurn()
-    turn = !turn
-    displayWinner(row, col)
 }
 
 function reset(){
