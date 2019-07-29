@@ -12,19 +12,19 @@ Game Story
 /*----- constants -----*/
 
 const zombies =  [
-    "<img alt=zombie src=images/girlZombie.svg>",
-    "<img alt=zombie src=images/blueZombie.svg>",
-    "<img alt=zombie src=images/greyZombie.svg>",
-    "<img alt=zombie src=images/greenZombie.svg>",
-    "<img alt=zombie src=images/greenZombie.svg>"
+    "<img class=mark alt=zombie src=images/zombie1.svg>",
+    "<img class=mark alt=zombie src=images/zombie2.svg>",
+    "<img class=mark alt=zombie src=images/zombie3.svg>",
+    "<img class=mark alt=zombie src=images/zombie4.svg>",
+    "<img class=mark alt=zombie src=images/zombie5.svg>"
 ]
 
 const plants = [
-    "<img alt=plant src=images/plant1.svg>",
-    "<img alt=plant src=images/plant3.svg>",
-    "<img alt=plant src=images/plant1.svg>",
-    "<img alt=plant src=images/plant3.svg>",
-    "<img alt=plant src=images/plant1.svg>",
+    "<img class=mark alt=plant src=images/plant1.svg>",
+    "<img class=mark alt=plant src=images/plant2.svg>",
+    "<img class=mark alt=plant src=images/plant3.svg>",
+    "<img class=mark alt=plant src=images/plant4.svg>",
+    "<img class=mark alt=plant src=images/plant5.svg>",
 ]
 
 let moveCt1 = 0
