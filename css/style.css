@@ -84,6 +84,14 @@ h2 {
     border: 3px solid orangered;
 }
 
+#zombiesWin {
+    margin-top: 30px;
+    padding: 10px;
+    color: orangered;
+    font-size: 30px;
+    font-weight: bold;
+}
+
 #resetBtn {
     display: block;
     background-color: lightgreen;

@@ -9,7 +9,6 @@ Game Story
 
 */
 
-
 /*----- constants -----*/
 
 const zombies =  [
@@ -32,13 +31,7 @@ let moveCt1 = 0
 let moveCt2 = 0
 const boardEl = document.querySelector('#board')
 const resetBtn = document.querySelector('#resetBtn')
-
-
-/* const players = {
-    '1': 'X',
-    '-1': 'O',
-    '0': ' ', 
-}*/
+const main = document.querySelector("#main")
 
 
 /*----- app's state (variables) -----*/ 
@@ -48,8 +41,6 @@ let turn, winner;
 /*----- event listeners -----*/ 
 
 resetBtn.addEventListener("click", reset)
-
-
 
 
 /*----- functions -----*/
@@ -118,7 +109,6 @@ const checkDiagonal = (rowIdx, colIdx) => {
     return sum1 === 3 || sum2 === 3 ? true : false
 }
 
-
 // When I click a box mark it with an x
 function handleClick(evt) {
 
@@ -140,12 +130,15 @@ function handleClick(evt) {
     }
     turn = !turn
     if (checkForWin(row, col)){
-        if (turn) {
-            const winner = document.createElement('div')
-            winner.classList.add('winner')
-            winner.textContent = 'The zombies ate your barins!!'
-
-            alert('The zombies ate your barins!!')
+        const winnerEl = document.createElement('div')
+        if (!turn) {
+            winnerEl.textContent = 'The zombies ate your barins!!'
+            winnerEl.setAttribute("id", "zombiesWin" )
+            console.log(main)
+            main.appendChild(winnerEl)
+            
+            console.log('The zombies ate your barins!!')
+            //alert('The zombies ate your barins!!')
         } else {
             alert('The plants won!!')
         }
@@ -166,8 +159,3 @@ function reset(){
     }
     console.log('endBoard: ', board)
 }
-
-
-
-
-
