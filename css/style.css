@@ -2,13 +2,19 @@ body {
     font-family: 'Courier New', Courier, monospace;
     /* view height */
     height: 100vh;
+    background-color: lightyellow;
+    padding: 0px;
+    margin: 0px;
+}
+
+.layout {
     display: flex;
-    flex-flow: column;
-    /* justify-content: center; */
-    align-items: center; 
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
     align-content: center;
     text-align: center;
-    background-color: lightyellow;
+    width: 100vmax;
 }
 
 .clearfix:after {
@@ -28,23 +34,20 @@ body {
 
 header {
     background-color: darkgrey;
-    display: block;
-    width: 100%;
-    height: 120px;
-    /* border-bottom: 20px solid rgb(92, 179, 52); */
+    width: 100vmax;
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 6vmin;
     font-weight: bold;
-    margin: 15px;
+    margin: 1vmin;
     color: rgba(187, 54, 83, 1);
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 4vmin;
     font-weight: bold;
-    margin-bottom: 50px;
+    margin-bottom: 1vmin;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -53,7 +56,7 @@ h2 {
 }
 
 #vs {
-    font-size: 25px;
+    font-size: 3vmin;
     font-weight: bold;
     color: rgb(187, 54, 83);
 }
@@ -63,21 +66,22 @@ h2 {
 }
 
 #main {
-    display: inherit;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    background-color: ligthyellow;
-    width: 100%;
-    margin: 0;
+    width: 100vmax;
+    flex: flex-grow;
+    justify-content: flex-start;
+
+}
+
+#winner {
+    width: 100vmax;
+    margin: 1vmin;
 }
 
 #board {
     display: grid;
     grid-template-columns: repeat(3, 15vmin);
     grid-template-rows: repeat(3, 15vmin);
-    margin: 50px 15px;
-
+    margin: 2vmin;
 }
 
 .cell:hover {
@@ -94,29 +98,14 @@ h2 {
     height: 14vmin;
 }
 
-#zombiesWin {
-    margin-top: 30px;
-    padding: 10px;
-    color: orangered;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-#plantsWin {
-    margin-top: 30px;
-    padding: 10px;
-    color: green;
-    font-size: 30px;
-    font-weight: bold;
-}
-
 #resetBtn {
-    display: block;
     background-color: rgb(135, 173, 86);
-    padding: 1vmin 8vmin;
-    max-width: 100px;
-    font-size: 25px;
+    padding: .5vmin 3vmin;
+    font-size: 2vmin;
+    font-weight: bold;
     text-align: center;
+    margin-bottom: 2vmin;
+    color: rgb(77, 76, 76);
 }
 
 #resetBtn:hover {
@@ -124,30 +113,31 @@ h2 {
     transform: scale(1.2);
 }
 
-footer {
-    display: flex;
-    flex-flow: row wrap;
-    background-color: lightyellow;
-    width: 100%;
-    height: 10%;
-    /* align-items: center;  */
-    align-content: flex-end;
-    justify-content: center;
+#zombiesWin {
+    color: orangered;
+    font-weight: bold;
+    margin-top: 1vmin;
+    font-size: 5vmin;
+
 }
 
-#credits {
-    font-size: 12px;
-    padding: 10px;
-    text-align: center;
-    width: 100%;
+#plantsWin {
+    color: green;
+    font-weight: bold;
+    margin-top: 2vmin;
+    font-size: 5vmin;
+}
+
+footer {
+    width: 100vmax;
+    flex-grow: 0;
 }
 
 #signature {
-    padding: 20px;
+    padding: 1vmin;
     background-color: rgb(161, 240, 96);
     width: 100%;
-    font-size: 18px;
-    height: 20%;
+    font-size: 2vmin;
 }
 
 .message {
@@ -159,4 +149,13 @@ footer {
     color: orangered;
     font-weight: 700;
     margin: 15x;
+}
+
+
+#credits {
+    font-size: 1.5vmin;
+    padding: 2vmin;
+    text-align: center;
+    width: 100%;
+    flex-grow: 0
 }

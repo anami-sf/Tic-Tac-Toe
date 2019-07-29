@@ -161,9 +161,17 @@ function reset(){
     moveCt2 = 0
     winnerEl.textContent = ""
     turnEl.innerHTML = "<span id=plants>Plants</span><span id=vs> vs </span> <span id=zombies>Zombies</span>"
-    for(row of board) {
+    console.log(board)
+    for(row of board) {  //forEach and standard
         for(cellValue of row){
-            cellValue = 0   //The cell value is not getting reset as expected  
+            cellValue = 0   //The cell value is not getting reset as 
+            console.log(cellValue)
+            console.log(board)
+            return cellValue
         }
+        return row
+        console.log(board)
     }
+    return board
+    console.log(board)
 }
