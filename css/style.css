@@ -38,7 +38,7 @@ h1 {
     font-size: 40px;
     font-weight: bold;
     margin: 15px;
-    color: rgb(187, 54, 83);
+    color: rgba(187, 54, 83, 1);
 }
 
 h2 {
@@ -49,7 +49,7 @@ h2 {
 }
 
 #plants {
-    color: green;
+    color: rgb(75, 124, 10);
 }
 
 #vs {
@@ -112,7 +112,7 @@ h2 {
 
 #resetBtn {
     display: block;
-    background-color: lightgreen;
+    background-color: rgb(135, 173, 86);
     padding: 1vmin 5vmin;
     max-width: 100px;
 }

@@ -119,7 +119,7 @@ const checkForWin = (rowIdx, colIdx) => {
 function displayWinner(row, col) {
     if (checkForWin(row, col)){      
         if (!turn) {
-            winnerEl.textContent = 'The zombies ate your barins!!'
+            winnerEl.textContent = 'The zombies ate your brains!!'
             winnerEl.setAttribute("id", "zombiesWin" )
             main.appendChild(winnerEl)
             
