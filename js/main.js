@@ -95,20 +95,16 @@ const checkRow = (rowIdx) => {
 
 const checkCol = (colIdx) => {
     const sum = Math.abs(board[0][colIdx] + board[1][colIdx] + board[2][colIdx])
-    console.log(board)
-    console.log('sum: ' + sum)
     return sum === 3 ? true : false
 }
 
 const checkDiagonal = (rowIdx, colIdx) => {
-    console.log('Checking diagonal')
     const sum1 = Math.abs(board[0][0] + board[1][1] + board[2][2])
     const sum2 = Math.abs(board[2][0] + board[1][1] + board[0][2])
     return sum1 === 3 || sum2 === 3 ? true : false
 }
 
 const checkForWin = (rowIdx, colIdx) => {
-    console.log('checking for win')
     if (checkRow(rowIdx) || checkCol(colIdx) || checkDiagonal(rowIdx, colIdx)) {
         return true
     } else {
@@ -121,16 +117,13 @@ function displayWinner(row, col) {
         if (!turn) {
             winnerEl.textContent = 'The zombies ate your brains!!'
             winnerEl.setAttribute("id", "zombiesWin" )
-            //main.appendChild(winnerEl)
-            
-            console.log('The zombies ate your barins!!')
-            //alert('The zombies ate your barins!!')
         } else {
             winnerEl.textContent = 'The plants are taking over!!'
             winnerEl.setAttribute("id", "plantsWin" )
-            //main.appendChild(winnerEl)
         }
-        console.log('You win!')
+    } else if (moveCt1===5){
+        winnerEl.textContent = "Its a tie -_-"
+        winnerEl.setAttribute("id", "zombiesWin" )
     }
 }
 
@@ -139,8 +132,6 @@ function handleClick(evt) {
 
     const row = parseInt(evt.target.getAttribute('data-row')) 
     const col = parseInt(evt.target.getAttribute('data-col')) 
-    console.log('row: ' + row)
-    console.log('col: ' + col)
   
     if (turn) {
         evt.target.innerHTML = zombies[moveCt1]
@@ -156,7 +147,6 @@ function handleClick(evt) {
     displayTurn()
     turn = !turn
     displayWinner(row, col)
-    //here
 }
 
 function reset(){
@@ -168,9 +158,7 @@ function reset(){
     turnEl.innerHTML = "<span id=plants>Plants</span><span id=vs> vs </span> <span id=zombies>Zombies</span>"
     for(row of board) {
         for(cellValue of row){
-            cellValue = 0   //The cell value is not getting reset as expected
-            console.log('cell value: ' , typeof cellValue)       
+            cellValue = 0   //The cell value is not getting reset as expected  
         }
     }
-    console.log('endBoard: ', board)
 }
