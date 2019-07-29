@@ -113,8 +113,10 @@ h2 {
 #resetBtn {
     display: block;
     background-color: rgb(135, 173, 86);
-    padding: 1vmin 5vmin;
+    padding: 1vmin 8vmin;
     max-width: 100px;
+    font-size: 25px;
+    text-align: center;
 }
 
 #resetBtn:hover {

@@ -31,7 +31,7 @@ let moveCt1 = 0
 let moveCt2 = 0
 const main = document.querySelector("#main")
 const boardEl = document.querySelector('#board')
-const winnerEl = document.createElement('div')
+const winnerEl = document.querySelector('#winner')
 const turnEl = document.querySelector("#turn")
 const resetBtn = document.querySelector('#resetBtn')
 
@@ -121,14 +121,14 @@ function displayWinner(row, col) {
         if (!turn) {
             winnerEl.textContent = 'The zombies ate your brains!!'
             winnerEl.setAttribute("id", "zombiesWin" )
-            main.appendChild(winnerEl)
+            //main.appendChild(winnerEl)
             
             console.log('The zombies ate your barins!!')
             //alert('The zombies ate your barins!!')
         } else {
             winnerEl.textContent = 'The plants are taking over!!'
             winnerEl.setAttribute("id", "plantsWin" )
-            main.appendChild(winnerEl)
+            //main.appendChild(winnerEl)
         }
         console.log('You win!')
     }
