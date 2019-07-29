@@ -29,9 +29,11 @@ const plants = [
 
 let moveCt1 = 0
 let moveCt2 = 0
-const boardEl = document.querySelector('#board')
-const resetBtn = document.querySelector('#resetBtn')
 const main = document.querySelector("#main")
+const boardEl = document.querySelector('#board')
+const winnerEl = document.createElement('div')
+const resetBtn = document.querySelector('#resetBtn')
+
 
 
 /*----- app's state (variables) -----*/ 
@@ -130,7 +132,7 @@ function handleClick(evt) {
     }
     turn = !turn
     if (checkForWin(row, col)){
-        const winnerEl = document.createElement('div')
+        
         if (!turn) {
             winnerEl.textContent = 'The zombies ate your barins!!'
             winnerEl.setAttribute("id", "zombiesWin" )
@@ -152,6 +154,7 @@ function reset(){
     renderBoard()
     moveCt1 = 0
     moveCt2 = 0
+    winnerEl.textContent = ""
     for(row of board) {
         for(cellValue of row){
             cellValue = 0
