@@ -102,6 +102,7 @@ h2 {
     text-align: center;
     margin-bottom: 2vmin;
     color: rgb(77, 76, 76);
+    border: none;
 }
 
 #resetBtn:hover {
